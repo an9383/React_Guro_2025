@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-const Count = () =>{
-  const [count, setCount] = useState(0);
+const Count = (props) =>{
+  const [setData] = props;
+
   return(
     <>
-      <div>{count}</div>
-      <button onClick={()=>setCount(prev => prev+1)}>button</button>
+      <button onClick={()=>setData("안녕히 가세요")}>버튼</button>
+      
     </>
   )
 }
