@@ -1,27 +1,26 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import './App.css';
+import Count from './components/Count';
 
-const initialscore = {
-  이름:"John",
-  국어:80,
-  영어:90,
-  수학:100,
-}
+// const initialscore = {
+//   이름:"John",
+//   국어:80,
+//   영어:90,
+//   수학:100,
+// }
 
 function App() {
-  const [score, setScore] = useState(initialscore);
-  const handleClick = () => {
-    setScore((prev) => ({...prev, 국어:100}))
-  }
+  // const [score, setScore] = useState(initialscore);
+  // const handleClick = () => {
+  //   setScore((prev) => ({...prev, 국어:100}))
+  // }
+  // const [number, setNumber] = useState(0);
+  //const [string, setString] = useState("안녕하세요");
 
   return (
-    <div className="App">
-      <div>{score.이름}</div>
-      <div>{score.국어}</div>
-      <div>{score.영어}</div>
-      <div>{score.수학}</div>
-      <button onClick={handleClick}>수정</button>
-    </div>
+    <>
+      <Count />
+    </>
   );
 }
 
