@@ -5,8 +5,7 @@ const Count = (props) =>{
 
   return(
     <>
-      <button onClick={()=>setData("안녕히 가세요")}>버튼</button>
-      
+      <button onClick={()=> setData("안녕히 가세요")}>버튼</button>
     </>
   )
 }
