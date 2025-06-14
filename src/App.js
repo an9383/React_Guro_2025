@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import Count from './components/Count';
+import Table from './components/Table';
 
 
 // const initialscore = {
@@ -18,12 +18,11 @@ function App() {
   // const [number, setNumber] = useState(0);
   //const [string, setString] = useState("안녕하세요");
 
-  const [data, setData] = useState("안녕하세요");
+  //const [data, setData] = useState("안녕하세요");
 
   return (
     <>
-      <Count setData={setData} />
-        <div>{data}</div>
+      <Table />
     </>
   );
 }
