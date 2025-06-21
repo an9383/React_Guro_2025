@@ -1,7 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import Tr from './Tr';
-
-
 
 const data = [
     {name: "john", kor: 90, math: 89, eng: 95, sci: 100},
