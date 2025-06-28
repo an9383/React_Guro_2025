@@ -2,7 +2,6 @@ const initialState = {color: 'black'}
 
 //export changeColor = (dispach)=>({type: "RED"})
 
-
 const colorReducer = (state=initialState, action) => {
     switch(action.type){
         case "RED": 
