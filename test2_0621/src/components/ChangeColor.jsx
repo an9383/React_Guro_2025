@@ -1,5 +1,4 @@
-import React, { useState} from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useReducer } from 'react'
 
 
 const style ={
@@ -10,23 +9,30 @@ const style ={
     color: "white",
 }
 
+const initialState = {color: 'black'}
 
+const colorReducer = (state, action) => {
+    switch(action.type){
+        case "RED": 
+            return {...state, color:'red'}
+        case "BLUE":
+            return {...state, color: 'blue'}
+
+        default:
+            return state;
+    }
+}
 
 
 const ChangeColor = () => {
-    const state = useSelector(state=>state.color)
-    // const [state, dispatch] = useReducer(colorReducer, initialState);
-    // const handleClick = (param) => {
-    //     param === "red" ? dispatch({type:"RED"}) : dispatch({type:"BLUE"})
-    // }
-    const handleClick = (param)=>{
-        console.log("state", state)
-        return param
+    const [state, dispatch] = useReducer(colorReducer, initialState);
+    const handleClick = (param) => {
+        param === "red" ? dispatch({type:"RED"}) : dispatch({type:"BLUE"})
     }
 
   return (
     <>
-        <div style={{...style}}>안녕하세요!!!</div>
+        <div style={{...style, backgroundColor: state.color}}>안녕하세요!!!</div>
         <button onClick={()=>handleClick('red')}>red</button>
         <button onClick={()=>handleClick('blue')}>blue</button>
         
