@@ -1,47 +1,37 @@
-import React from 'react'
+import React, { useState} from 'react'
+import { useSelector } from 'react-redux'
 
-const style = {
-    width: '100px',
-    height:"100px",
+
+const style ={
+    width: "100px",
+    height: "100px",
     backgroundColor: 'black',
     border: "1px solid black",
+    color: "white",
 }
 
-const initialState = {color:'black'}
 
-const colorReducer = (state, action) => {
-  switch (action.type) {
-    case 'red':
-      return {...state,color: 'red' };
-    case 'blue':
-      return {...state, Color: 'blue' };
-    default:
-      throw state;
-  }
-}
-const ChangeColor = () =>{
-    const [color, setColor] = React.useState('black');
-    const [textColor, setTextColor] = React.useState('white');
-    const [state, dispatch] = React.useReducer(colorReducer, initialState);
 
+
+const ChangeColor = () => {
+    const state = useSelector(state=>state.color)
+    // const [state, dispatch] = useReducer(colorReducer, initialState);
     // const handleClick = (param) => {
-    //     setColor(param);
+    //     param === "red" ? dispatch({type:"RED"}) : dispatch({type:"BLUE"})
     // }
-
-    const handleClick = (param) => {
-        dispatch({type: param})
+    const handleClick = (param)=>{
+        console.log("state", state)
+        return param
     }
+
   return (
     <>
-      {/* <div style={{...style, backgroundcolor:color, color: color}}>안녕하세요.!!!</div>
-      <button onClick={() => handleClick("red")}>red</button>
-      <button onClick={() => handleClick("green")}>Green</button>
-      <button onClick={() => setTextColor("blue")}>text color</button> */}
-      <div style={{...style, backgroundColor: state.color}}>안녕하세요.!!!</div>
-      <button onClick={() => dispatch({type: 'red'})}>red</button>
-      
+        <div style={{...style}}>안녕하세요!!!</div>
+        <button onClick={()=>handleClick('red')}>red</button>
+        <button onClick={()=>handleClick('blue')}>blue</button>
+        
     </>
   )
 }
 
-export default ChangeColor
+export default ChangeColor;
