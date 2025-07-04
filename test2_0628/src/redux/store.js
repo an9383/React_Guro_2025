@@ -1,10 +1,11 @@
-import { configureStore } from "@reduxjs/toolkit";
-import colorReducer from "./reducer";
+import { legacy_createStore, applyMiddleware, combineReducers } from 'redux';
+import {thunk} from 'redux-thunk';
+import viewReducer from './reducer';
 
-const store = configureStore({
-    reducer: {
-        color: colorReducer // color로 받는다!!!!!!!
-        count: count
-    }
-})
+const rootReducer = combineReducers({
+    view: viewReducer, // state.view.loading, state.view.data 등으로 접근
+});
+
+const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
+
 export default store;
