@@ -13,7 +13,7 @@ const ThemeButton=()=> {
 
     }
     return (
-        <button style={buttonStyle} onClick={()=>}>
+        <button style={buttonStyle} onClick={(setTheme)}>
             현재 테마: {theme} (클릭하여 변경)
         </button>
     )
