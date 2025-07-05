@@ -15,10 +15,10 @@ const Nickname = () => {
 
   return (
     <>
-      <div><input type="text" name="이름"  onChange={handleChange} /></div>
-      <div><input type="text" name="별명"  onChange={handleChange} /></div>
-      <div><b>이름:</b>{이름}</div>
-      <div><b>이름:</b>{별명}</div>
+        <div><input type="text" name="이름"  onChange={handleChange} /></div>
+        <div><input type="text" name="별명"  onChange={handleChange} /></div>
+        <div><b>이름:</b>{이름}</div>
+        <div><b>이름:</b>{별명}</div>
     </>
   )
 }
