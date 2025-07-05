@@ -4,12 +4,18 @@ import { createSlice } from '@reduxjs/toolkit';
 const nicknameSlice = createSlice({ 
     name: 'nickname',
     initialState: {
-        name: '',
-        nickname: '',
+        이름: '',
+        별명: '',
     },
     reducers: {
         changeInput: (state, action) => {
-            action.payload, 
-        },
+            const {name, value} = action.payload
+            state[name] = value;
+        }
     },
 });
+
+
+export const {changeInput} = nicknameSlice.actions;
+
+export default nicknameSlice.reducer;
