@@ -1,21 +1,18 @@
-/* eslint-disable no-unused-vars */
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from "@reduxjs/toolkit";
 
-const nicknameSlice = createSlice({ 
-    name: 'nickname',
+const nicknameSlice = createSlice({
+    name: "nicknameSlice",
     initialState: {
         이름: '',
         별명: '',
-    },
+    }, 
     reducers: {
         changeInput: (state, action) => {
             const {name, value} = action.payload
-            state[name] = value;
+            state[name] = value
         }
-    },
+    }
 });
 
-
 export const {changeInput} = nicknameSlice.actions;
-
 export default nicknameSlice.reducer;

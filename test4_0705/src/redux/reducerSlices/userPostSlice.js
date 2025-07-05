@@ -2,11 +2,11 @@ import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
-export const fetchUsers = createAsyncThunk(
-    "fetchUsers",
-    async ()=>{
+export const fetchPostUsers = createAsyncThunk(
+    "fetchPostUsers",
+    async (object)=>{
         try{
-            const response = await axios.get("http://localhost:3001/users")
+            const response = await axios.post("http://localhost:3001/users", object)
             return response.data // action.payload
         }catch(error){
             return error //action.payload
@@ -15,8 +15,8 @@ export const fetchUsers = createAsyncThunk(
     }
 )
 
-const userSlice = createSlice({
-    name: "userSlice",
+const userPostSlice = createSlice({
+    name: "userPostSlice",
     initialState: {
         loading: false,
         data: [],
@@ -25,19 +25,19 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchUsers.pending, (state) => {
+            .addCase(fetchPostUsers.pending, (state) => {
                 state.loading = true;
                 })
-            .addCase(fetchUsers.fulfilled, (state, action) => {
+            .addCase(fetchPostUsers.fulfilled, (state, action) => {
                 state.loading = false;
                 state.data = action.payload;
                 })
-            .addCase(fetchUsers.rejected, (state, action) => {
+            .addCase(fetchPostUsers.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload || 'Something went wrong';
                 });
     },
 });
 
-export default userSlice.reducer;
+export default userPostSlice.reducer;
 

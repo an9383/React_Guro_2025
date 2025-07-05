@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUsers } from '../redux/reducerSlices/userSlice';
+import { fetchProducts } from '../redux/reducerSlices/productSlice';
 import { AgGridReact } from 'ag-grid-react';
 import { Typography, Spin, Alert } from 'antd';
 import { ClientSideRowModelModule } from 'ag-grid-community';
@@ -9,13 +9,13 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 const { Title } = Typography;
 
-const UserList = () => {
-  const { loading, data, error } = useSelector((state) => state.users);
+const ProductList = () => {
+  const { loading, data, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const [rowData, setRowData] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   useEffect(() => {
@@ -23,18 +23,26 @@ const UserList = () => {
   }, [data]);
 
   const columnDefs = useMemo(() => [
-    { headerName: '이름', field: 'name', sortable: true, filter: true },
-    { headerName: '나이', field: 'age', sortable: true, filter: true },
-    { headerName: '도시', field: 'city', sortable: true, filter: true },
-    { headerName: '이메일', field: 'email', sortable: true, filter: true },
+    { headerName: '상품명', field: 'name', sortable: true, filter: true },
+    { headerName: '가격', field: 'price', sortable: true, filter: true },
+    { headerName: '분류', field: 'category', sortable: true, filter: true },
+    {
+      headerName: '재고',
+      field: 'inStock',
+      sortable: true,
+      filter: true,
+      cellRendererFramework: (params) => (
+        <input type="checkbox" checked={params.value} disabled />
+      )
+    }
   ], []);
 
   return (
     <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '2rem' }}>
-      <Title level={2}>사용자 목록</Title>
+      <Title level={2}>상품 목록</Title>
 
       {loading && (
-        <Spin tip="사용자 데이터를 불러오는 중..." size="large" style={{ marginBottom: '2rem' }} />
+        <Spin tip="상품 데이터를 불러오는 중..." size="large" style={{ marginBottom: '2rem' }} />
       )}
 
       {error && (
@@ -48,7 +56,7 @@ const UserList = () => {
       )}
 
       {!loading && rowData.length === 0 && (
-        <Alert message="사용자 데이터가 없습니다." type="info" showIcon />
+        <Alert message="상품 데이터가 없습니다." type="info" showIcon />
       )}
 
       {!loading && rowData.length > 0 && (
@@ -67,4 +75,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default ProductList;

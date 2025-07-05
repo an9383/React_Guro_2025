@@ -1,18 +1,21 @@
-/* eslint-disable no-unused-vars */
 import './App.css'
-import Count from './components/Count'
-import Nickname from './components/Nickname'
-import UserList from './components/UserList'
+// import UserList from './components/UserList'
+// import UserPost from './components/UserPost';
+import ProductList from './components/ProductList';
+import ProductPost from './components/ProductPost';
 
-function App() {
+const  App = () => {
 
-  return (
-    <>
-      {/* <Count/>
-      <Nickname/> */}
-      <UserList/>
-    </>
-  )
+ return (
+  <>
+    {/* <UserPost/>
+    <br/>
+    <UserList/> */}
+    <ProductPost/>
+    <ProductList/>
+
+  </>
+ )
 }
 
-export default App
+export default App;
