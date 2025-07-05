@@ -14,11 +14,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import count from "./reducerSlices/countSlice";
 import nickname from "./reducerSlices/nicknameSlice";
+import users from "./reducerSlices/userSlice";
 
 const store = configureStore({
     reducer: {
         count,
         nickname,
+        users,
     }
 });
 

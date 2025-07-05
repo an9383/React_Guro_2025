@@ -10,7 +10,7 @@ const Nickname = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
 
-        dispatch(changeInput({ [e.target.name]: e.target.value }))
+        dispatch(changeInput({ name, value }))
     }
 
   return (
@@ -18,7 +18,7 @@ const Nickname = () => {
         <div><input type="text" name="이름"  onChange={handleChange} /></div>
         <div><input type="text" name="별명"  onChange={handleChange} /></div>
         <div><b>이름:</b>{이름}</div>
-        <div><b>이름:</b>{별명}</div>
+        <div><b>별명:</b>{별명}</div>
     </>
   )
 }
