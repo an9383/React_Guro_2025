@@ -1,12 +1,11 @@
-/* eslint-disable no-unused-vars */
-import React , {createContext, useContext, useState}   from 'react'
+import React, {createContext, useState} from 'react'
+
 
 const ThemeContext = createContext(null);
 
 const ThemeProvider = ({children}) => {
-    const [theme, setTheme] = useState('dark');
-    const contextValue = {theme, setTheme};
-
+    const [theme, setTheme] = useState("light");
+    const contextValue = {theme, setTheme}
   return (
     <ThemeContext.Provider value={contextValue}>
         {children}
@@ -14,5 +13,8 @@ const ThemeProvider = ({children}) => {
   )
 }
 
+export {ThemeProvider, ThemeContext};
 
-export default ThemeProvider
+
+
+
