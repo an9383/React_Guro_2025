@@ -7,7 +7,7 @@ import { register } from '../../redux/authSlice';
 // 초기 폼 값 설정 (Form 컴포넌트 사용 시 이 initialState는 직접 사용되지 않을 수 있지만, 구조를 보여주기 위해 유지)
 // Ant Design Form은 field prop을 통해 자체적으로 값을 관리합니다.
 const initialFormValues = {
-  username: '',
+  name: '',
   password: '',
   confirm: '',
   age: null, // Ant Design Input의 value는 문자열이므로, 초기값을 빈 문자열로 설정하는 것이 일반적입니다.
@@ -44,8 +44,11 @@ const Register = () => {
         message.error('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
         return;
       }
+      const {confirm, ...userData } = values;
       // register thunk를 디스패치합니다.
-      dispatch(register(values));
+      dispatch(register(userData));
+      navigate("/login");
+
     },
     [dispatch]
   );
@@ -77,7 +80,7 @@ const Register = () => {
           autoComplete="off" // 자동 완성 기능 비활성화
         >
           <Form.Item
-            name="username" // 필드 이름을 지정 (state의 키와 일치)
+            name="name" // 필드 이름을 지정 (state의 키와 일치)
             rules={[
               { required: true, message: '아이디를 입력해주세요!' },
               { min: 4, message: '아이디는 최소 4자 이상이어야 합니다.' },

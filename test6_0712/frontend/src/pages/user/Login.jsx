@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom'
 
 
 const initialState = {
-  username: '',
+  name: '',
   password: '',
 }
 
 const Login = () => {
   const [state, setState] = useState(initialState);
-  const { username, password } = state;
+  const { name, password } = state;
   const dispatch = useDispatch();
   const navigator = useNavigate();
   const { status, user, error, isAuthenticated } = useSelector(state => state.auth);
@@ -46,8 +46,8 @@ const Login = () => {
       <Card title="로그인" style={{ width: 400 }}>
         <Input
           placeholder='아이디'
-          value={username}
-          onChange={(e) => setState(prev => ({ ...prev, username: e.target.value }))}
+          value={name}
+          onChange={(e) => setState(prev => ({ ...prev, name: e.target.value }))}
           style={{ marginBottom: 16 }}
         />
         <Input.Password

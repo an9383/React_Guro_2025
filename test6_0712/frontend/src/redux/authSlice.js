@@ -7,7 +7,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (obj, thunkAPI) => {
     try {
-      const response = await axios.get(`http://localhost:3001/사용자/?name=${obj.username}`);
+      const response = await axios.get(`http://localhost:3001/사용자/?name=${obj.name}`);
       const data = response.data;
       console.log("user", response);
       
