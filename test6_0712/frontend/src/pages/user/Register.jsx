@@ -44,11 +44,10 @@ const Register = () => {
         message.error('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
         return;
       }
-      const {confirm, ...userData } = values;
+      const {confirm, ...userData}=values;
       // register thunk를 디스패치합니다.
       dispatch(register(userData));
-      navigate("/login");
-
+      navigate('/login');
     },
     [dispatch]
   );
@@ -159,4 +158,4 @@ const Register = () => {
   );
 };
 
-export default Register; 
+export default Register;

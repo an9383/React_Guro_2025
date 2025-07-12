@@ -1,32 +1,6 @@
-/* eslint-disable no-unused-vars */
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const login = createAsyncThunk(
-  "auth/login",
-  async (obj, thunkAPI) => {
-    try {
-      const response = await axios.get(`http://localhost:3001/사용자/?name=${obj.name}`);
-      const data = response.data;
-      console.log("user", response);
-      
-
-      if (data.length === 0) {
-        return thunkAPI.rejectWithValue("사용자를 찾을 수 없습니다.");
-      }
-
-      const user = data[0];
-      if (user.password !== obj.password.toString()) {
-        return thunkAPI.rejectWithValue("비밀번호가 틀렸습니다.");
-      }
-
-      return user;
-    } catch (error) {
-      return thunkAPI.rejectWithValue("서버 오류가 발생했습니다.");
-    }
-  }
-);
 
 // API 기본 URL을 상수로 정의하여 관리의 용이성을 높입니다.
 // 실제 배포 환경에서는 환경 변수를 사용하는 것이 일반적입니다.
@@ -56,6 +30,26 @@ export const register = createAsyncThunk(
 
       // ✅ rejectWithValue를 사용하여 에러 메시지를 payload로 전달합니다.
       return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const login = createAsyncThunk(
+  "auth/login",
+  async (obj, thunkAPI) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/사용자/?name=${obj.name}`);
+      const data = response.data;
+      if (data.length === 0) {
+        return thunkAPI.rejectWithValue("사용자를 찾을 수 없습니다.");
+      }
+      const user = data[0];
+      if (user.password !== obj.password.toString()) {
+        return thunkAPI.rejectWithValue("비밀번호가 틀렸습니다.");
+      }
+      return user;
+    } catch (error) {
+      return thunkAPI.rejectWithValue("서버 오류가 발생했습니다.");
     }
   }
 );

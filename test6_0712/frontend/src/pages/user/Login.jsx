@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React, { useCallback, useState, useEffect } from 'react'
 import { Input, Button, Card, Space } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../redux/authSlice'
 import { useNavigate } from 'react-router-dom'
-
 
 const initialState = {
   name: '',
