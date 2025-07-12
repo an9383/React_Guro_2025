@@ -28,6 +28,38 @@ export const login = createAsyncThunk(
   }
 );
 
+// API 기본 URL을 상수로 정의하여 관리의 용이성을 높입니다.
+// 실제 배포 환경에서는 환경 변수를 사용하는 것이 일반적입니다.
+const API_BASE_URL = "http://localhost:3001"; 
+
+export const register = createAsyncThunk(
+  "auth/register",
+  async (userData, thunkAPI) => { // 'obj' 대신 'userData'와 같이 명확한 인자 이름을 사용합니다.
+    try {
+      // ✅ API 엔드포인트를 명확하고 RESTful 하게 변경합니다.
+      // '사용자' 대신 'users' 또는 'auth/register'와 같이 영문 복수형을 사용합니다.
+      const response = await axios.post(`${API_BASE_URL}/사용자`, userData); 
+      
+      // ✅ 서버 응답에서 필요한 데이터를 반환합니다.
+      // 일반적으로 등록 성공 시 사용자 정보 등을 반환합니다.
+      return response.data; 
+
+    } catch (error) {
+      // ✅ 에러 응답 구조에 따라 적절한 에러 메시지를 추출합니다.
+      // error.response는 Axios 에러에서 서버 응답을 포함합니다.
+      const message = 
+        (error.response && 
+         error.response.data && 
+         error.response.data.message) || 
+        error.message || 
+        error.toString();
+
+      // ✅ rejectWithValue를 사용하여 에러 메시지를 payload로 전달합니다.
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const initialUser = JSON.parse(localStorage.getItem("user"));
 
 const authSlice = createSlice({
