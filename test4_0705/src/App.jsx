@@ -1,21 +1,13 @@
 import './App.css'
-// import UserList from './components/UserList'
-// import UserPost from './components/UserPost';
-import ProductList from './components/ProductList';
-import ProductPost from './components/ProductPost';
+import Count from './components/Count'
 
-const  App = () => {
+function App() {
 
- return (
-  <>
-    {/* <UserPost/>
-    <br/>
-    <UserList/> */}
-    <ProductPost/>
-    <ProductList/>
-
-  </>
- )
+  return (
+    <>
+      <Count/>
+    </>
+  )
 }
 
-export default App;
+export default App

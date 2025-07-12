@@ -13,10 +13,20 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import count from "./reducerSlices/countSlice";
+import nickname from "./reducerSlices/nicknameSlice";
+import users from "./reducerSlices/userSlice";
+import userPost from "./reducerSlices/userPostSlice";
+import products from "./reducerSlices/productSlice";
+import productPost from "./reducerSlices/productPostSlice";
 
 const store = configureStore({
     reducer: {
         count,
+        nickname,
+        users,
+        userPost,
+        products,
+        productPost,
     }
 });
 
