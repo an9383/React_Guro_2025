@@ -53,7 +53,7 @@ import { Link, useLocation } from 'react-router-dom';
   {
     key: '/sales',
     icon: <BarChartOutlined/>,
-    label: <Link to ="/sales">채널</Link>
+    label: <Link to ="/sales">영업</Link>
   },
 
  ]
