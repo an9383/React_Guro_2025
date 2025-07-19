@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Action
-export const salesPostAction = createAsyncThunk(
-    "salesPostAction", 
+export const salePostAction = createAsyncThunk(
+    "salePostAction", 
     async (data, thunkAPI) => {
         try{
             const response = await axios.post("http://localhost:3001/판매", data);
@@ -14,8 +14,8 @@ export const salesPostAction = createAsyncThunk(
     }
 )
 
-const salesPostSlice = createSlice({
-    name: "salesPost",
+const salePostSlice = createSlice({
+    name: "salePost",
     initialState: {
         data: null,
         status: 'idle',  // loading, success, failure
@@ -30,19 +30,19 @@ const salesPostSlice = createSlice({
     },
     extraReducers: (builder) =>{
         builder
-            .addCase(salesPostAction.pending, (state) => {
+            .addCase(salePostAction.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(salesPostAction.fulfilled, (state, action) =>{
+            .addCase(salePostAction.fulfilled, (state, action) =>{
                 state.status = "success";
                 state.data = action.payload;
             })
-            .addCase(salesPostAction.rejected, (state, action)=>{
+            .addCase(salePostAction.rejected, (state, action)=>{
                 state.status = "failure";
                 state.error = action.payload
             })
     }
 })
 
-export const {clearFunction} = salesPostSlice.actions;
-export default salesPostSlice.reducer
+export const {clearFunction} = salePostSlice.actions;
+export default salePostSlice.reducer

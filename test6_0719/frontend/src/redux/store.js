@@ -8,6 +8,7 @@ import category from "./categorySlice"
 import datePage from './datePageSlice'
 import subcategory from "./subcategorySlice"
 import sales from "./salesSlice"
+import salePost from "./salePostSlice"
 
 
 const store = configureStore({
@@ -21,6 +22,7 @@ const store = configureStore({
         datePage,
         subcategory,
         sales,
+        salePost,
     }
 });
 
