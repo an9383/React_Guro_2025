@@ -1,15 +1,13 @@
 import React from 'react'
 import { MdCheckBox, MdCheckBoxOutLineblank, MdRemoveCircleOutLine} from 'react-icons'
+import Todo from './Todo'
+import TodoInsert from './TodoInsert'
 
 const Todo = () => {
   return (
     <div>
-        <div>
-            <MdCheckBox style={{fotnSize:"1.5rem", color:"#339af0"}} />
-        </div>
-        <div>
-            javaScript study
-        </div>
+        <TodoInsert />
+        <TodoListItem />
     </div>
   )
 }
