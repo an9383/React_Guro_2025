@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { MdAdd } from 'react-icons/md'
 
 const formStyle = {
@@ -31,21 +31,31 @@ const buttonStyle ={
     transition: "0.1s background ease-in"
 }
 
+const initialItem = {
+    id: null,
+    text: null, 
+    checked: false,
+}
 
-const TodoInsert = () => {
 
-    const handleChange = useCallback(() =>{
+const TodoInsert = ({nextId, handleInsert}) => {
+    const [item, setItem] = useState(initialItem);
 
+    const handleChange = useCallback((e) =>{
+        setItem(prev=> ({...prev, id: nextId, [e.target.name]: e.target.value}))
     }, [])
-    const handleSubmit = useCallback(()=>{
 
-    }, [])
+    const handleSubmit = useCallback((e)=>{
+        e.preventDefault();
+        handleInsert(item);
+
+    }, [handleInsert, item.text, nextId])
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
         <input 
             style={inputStyle}
             type="text" 
-            name="todo" 
+            name="text" 
             onChange={handleChange} 
             placeholder='할 일을 입력하세요'
         />

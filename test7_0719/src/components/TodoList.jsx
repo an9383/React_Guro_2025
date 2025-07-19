@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import TodoListItem from './TodoListItem'
 
@@ -9,14 +8,16 @@ const listStyle = {
 }
 
 
-const todos = [1, 2, 3, 4]
 
 
-const TodoList = () => {
+const TodoList = ({todos}) => {
   return (
     <div style={listStyle}>
         {todos.map(todo=>(
-            <TodoListItem/>
+            <TodoListItem
+                key={todo.id}
+                todo={todo}
+            />
         ))}
     </div>
   )

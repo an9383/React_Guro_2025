@@ -28,14 +28,21 @@ const itemStyle = {
 }
 
 
-const TodoListItem = () => {
+const TodoListItem = ({todo}) => {
   return (
     <div style={itemStyle}>
         <div style={checkboxStyle}>
-            <MdCheckBox style={{fontSize:"1.5rem", color: "#339af0"}}/>
+            {todo.checked ? 
+            (<MdCheckBox style={{fontSize:"1.5rem", color: "#339af0"}}/>)
+            :(<MdCheckBoxOutlineBlank style={{fontSize:"1.5rem", color: "#495057"}}/>)
+        }
+            
         </div>
-        <div style={textStyle}>
-            javaScript 공부
+        <div style={{...textStyle,
+            textDecoration: todo.checked ? 'line-through': 'none',
+            color: todo.checked ? "#adb5bd": "#495057",
+        }}>
+            {todo.text}
         </div>
         <div style={removeStyle}>
             <MdRemoveCircleOutline/>
