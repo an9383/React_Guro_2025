@@ -1,53 +1,47 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
-import { MdCheckBox, MdCheckBoxOutLineblank, MdRemoveCircleOutLine} from 'react-icons'
+import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from 'react-icons/md'
 
 const checkboxStyle = {
-  cursor:"pointer",
-  flex:1,
-  display: "flex",
-  alignItems: "center",
+    cursor: "pointer",
+    flex: 1,
+    display: "flex",
+    alignItems: "center"
 }
 
 const textStyle={
-  marginLeft:"0.5rem",
-  flex:1,
-  display:"flex",
-  justifyContent:"space-between",
-  alignItems:"center",
-  borderBottom:"1px solid #ccc",
+    marginLeft: "0.5rem",
+    flex: 1
 }
 
-const removeStyle={
-  display:"flex",
-  alignItems:"center",
-  fontSize: "1.5rem",
-  color:"#ff6b6b",
+const removeStyle = {
+    display: 'flex',
+    alignItems: "center",
+    fontSize: '1.5rem',
+    color: "#ff6b6b",
+    cursor: "pointer"
 }
 
 const itemStyle = {
-  padding:"1rem",
-  display:"flex",
-  alignItems:"center",
+    padding: "1rem",
+    display: "flex",
+    alignItems:"center"
 }
+
 
 const TodoListItem = () => {
   return (
-        <div>
-            <div style={itemStyle}>
-                <MdCheckBox style={{fotnSize:"1.5rem", color:"#339af0"}} />
-            </div>
-            <div style={textStyle}>
-                javaScript study
-            </div>
-            <div style={removeStyle}>
-                <MdRemoveCircleOutLine />
-            </div>
+    <div style={itemStyle}>
+        <div style={checkboxStyle}>
+            <MdCheckBox style={{fontSize:"1.5rem", color: "#339af0"}}/>
         </div>
+        <div style={textStyle}>
+            javaScript 공부
+        </div>
+        <div style={removeStyle}>
+            <MdRemoveCircleOutline/>
+        </div>
+    </div>
   )
 }
 
-
-
-
-export default TodoListItem
+export default TodoListItem;

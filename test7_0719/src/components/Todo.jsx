@@ -1,13 +1,13 @@
 import React from 'react'
-import { MdCheckBox, MdCheckBoxOutLineblank, MdRemoveCircleOutLine} from 'react-icons'
-import Todo from './Todo'
+import TodoList from './TodoList'
 import TodoInsert from './TodoInsert'
+
 
 const Todo = () => {
   return (
     <div>
-        <TodoInsert />
-        <TodoListItem />
+        <TodoInsert/>
+        <TodoList/>
     </div>
   )
 }
