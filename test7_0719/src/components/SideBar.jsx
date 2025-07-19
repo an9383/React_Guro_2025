@@ -51,9 +51,9 @@ import { Link, useLocation } from 'react-router-dom';
     label: <Link to ="/channel">채널</Link>
   },
   {
-    key: '/sales',
+    key: '/sale',
     icon: <BarChartOutlined/>,
-    label: <Link to ="/sales">채널</Link>
+    label: <Link to ="/sale">판매</Link>
   },
 
  ]
