@@ -1,5 +1,7 @@
 import React from 'react'
 import { MdCheckBox, MdCheckBoxOutlineBlank, MdRemoveCircleOutline } from 'react-icons/md'
+import { handleDelete, handleToggle } from '../redux/todoSlice';
+import { useDispatch } from 'react-redux';
 
 const checkboxStyle = {
     cursor: "pointer",
@@ -28,10 +30,11 @@ const itemStyle = {
 }
 
 
-const TodoListItem = ({todo,handleDelete,handleToggle}) => {
+const TodoListItem = ({todo}) => {
+    const dispatch = useDispatch();
   return (
     <div style={itemStyle}>
-        <div style={checkboxStyle} onClick={()=>handleToggle(todo.id)}>
+        <div style={checkboxStyle} onClick={()=>dispatch(handleToggle(todo.id))}>
             {todo.checked ? 
             (<MdCheckBox style={{fontSize:"1.5rem", color: "#339af0"}}/>)
             :(<MdCheckBoxOutlineBlank style={{fontSize:"1.5rem", color: "#495057"}}/>)
@@ -44,7 +47,7 @@ const TodoListItem = ({todo,handleDelete,handleToggle}) => {
         }}>
             {todo.text}
         </div>
-        <div style={removeStyle} onClick={()=>handleDelete(todo.id)}>
+        <div style={removeStyle} onClick={()=>dispatch(handleDelete(todo.id))}>
             <MdRemoveCircleOutline/>
         </div>
     </div>

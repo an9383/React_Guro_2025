@@ -1,5 +1,5 @@
 import './App.css'
-import Todo from './components/Todo'
+import Todo2 from './components/Todo2'
 import TodoProvider from './context/TodoContext'
 
 // function App() {
@@ -13,16 +13,17 @@ import TodoProvider from './context/TodoContext'
 
 // export default App
 
-
 function App() {
 
   return (
     <>
       <TodoProvider>
-        <Todo/>
+         <Todo2/> {/* children */}
       </TodoProvider>
+      
     </>
   )
 }
 
 export default App
+
