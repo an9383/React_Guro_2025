@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ag-grid-enterprise/all-modules": "^27.3.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "ag-grid-community": "^34.0.2",
+    "ag-grid-enterprise": "^34.0.2",
     "ag-grid-react": "^34.0.2",
     "antd": "^5.26.4",
     "axios": "^1.10.0",
