@@ -1,8 +1,8 @@
-
-import Main from './components/Main'
 import './App.css'
+import Main from './components/Main'
 
 function App() {
+
   return (
     <>
       <Main/>
@@ -10,4 +10,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

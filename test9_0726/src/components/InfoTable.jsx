@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 const tStyle={
     borderCollapse: "collapse",
@@ -17,12 +16,12 @@ const InfoTable = ({info}) => {
     <table style={tStyle}>
         <thead>
             <tr>
-                {Object.keys(info).map(item=><th style={cStyle}>{item}</th>)}
+                {Object.keys(info).map(key=><th style={cStyle}>{key}</th>)}
             </tr>
         </thead>
         <tbody>
             <tr>
-                {Object.values(info).map(item=><td style={cStyle}>{item}</td>)}
+                {Object.values(info).map(value=><td style={cStyle}>{value}</td>)}
             </tr>
         </tbody>
         

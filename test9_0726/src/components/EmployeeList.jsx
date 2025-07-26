@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 import React, { useState }  from 'react';
 import { Link } from 'react-router-dom';
 import InfoTable from './InfoTable';
@@ -22,17 +20,22 @@ const initialState = {
 }
 
 
-const EmployeeList = ({infos}) => {
+const EmployeeList = ({infos, handleSearchName}) => {
   const [info, setInfo] = useState(initialState)
   const handleClick = (name) =>{
      setInfo(infos?.filter(info=>info.name===name)[0])
-
+     handleSearchName(name)
   }
-
   return (
     <>
       <div style={style}>
-          {infos.map(info=><Link to="/" key={info.name} onClick={()=>handleClick(info.name)}> {info.name} </Link>)}
+          {infos.map(info=><Link 
+                              to="/" 
+                              key={info.name}
+                              onClick={()=>handleClick(info.name)}
+                            >
+                              {info.name}
+                            </Link>)}
       </div>
       <InfoTable info={info}/>
     </>
