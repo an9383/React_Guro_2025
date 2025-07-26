@@ -1,5 +1,5 @@
 import './App.css'
-import Todo2 from './components/Todo2'
+//import Todo2 from './components/Todo2'
 import TodoProvider from './context/TodoContext'
 
 // function App() {
