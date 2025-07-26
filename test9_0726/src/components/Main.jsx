@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, {useState} from 'react'
 import EmployeeList from './employeeList'
+
 
 const initialState = [
     {name:"John", age: 30, job: "frontend",language:"react",pay:400},
@@ -12,10 +13,10 @@ const initialState = [
 
 
 const Main = () => {
-    const [infos, setInfos] = React.useState(initialState)
+    const [infos, setInfos] = useState(initialState)
   return (
-    <div>
-        <EmployeeList infos={infos} setInfos={setInfos} />  {/* passing the state to the EmployeeList component */}
+    <div style={{width:"100%"}}>
+        <EmployeeList infos={infos} setInfos={setInfos} />  
     </div>
   )
 }
