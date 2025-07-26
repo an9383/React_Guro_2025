@@ -27,7 +27,7 @@ const inputStyle = {
   fontSize: '14px'
 };
 
-const Upgrade = ({upInfo, handleUpgrade}) => {
+const Upgrade = ({name, upInfo, handleUpgrade}) => {
     const [info, setInfo] = useState(upInfo ? upInfo:{});
     const handleChange = (e) =>{
         setInfo(prev=>({...prev, [e.target.name]: e.target.value}))
@@ -41,7 +41,7 @@ const Upgrade = ({upInfo, handleUpgrade}) => {
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
         Name
-        <input type="text" name="name" style={inputStyle} value={info.name} disabled/>
+        <input type="text" name="name" style={inputStyle} value={name && info.name} disabled/>
       </label>
       <label style={labelStyle}>
         Age

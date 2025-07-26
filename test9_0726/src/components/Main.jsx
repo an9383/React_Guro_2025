@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import EmployeeList from './employeeList';
 import { Link } from 'react-router-dom';
 import Register from './Register';
@@ -25,24 +25,32 @@ const Main = () => {
     const [infos, setInfos] = useState(initialState);
     const [upInfo, setUpInfo] = useState(null)
     const [mode, setMode] = useState('');
+    const [name, setName] = useState('')
   
     const modes = useMemo(()=>[ "register", "upgrade", "delete", "초기화"], [])
     const handleSearchName = (n) =>{
+          setName(n);
           setUpInfo(infos.filter(info=>info.name===n)[0])
     } 
-    const handleClick = (mod) =>{
+    const handleClick = useCallback((mod) =>{
         setMode(mod);
-    }
+        if(mod === 'delete'){
+          setInfos(prev=>prev.filter(item => item.name !== name))
+        }
+        setName(null)
+    }, [name])
     const handleRegister = (obj) =>{
       setInfos(prev=>([...prev, obj]))
     }
     const handleUpgrade = (obj) => {
       setInfos(prev=>prev.map(item => (item.name===obj.name ? obj: item)))
     }
+  
   return (
     <>
       <div>
           <EmployeeList 
+            name={name}
             infos={infos}
             handleSearchName = {handleSearchName}
           />
@@ -64,10 +72,14 @@ const Main = () => {
         {mode === "register" ? <Register 
                                 handleRegister={handleRegister}
                                 /> 
-                            : <Upgrade
+                            : 
+                            mode === "upgrade" ? <Upgrade
+                                name={name}
                                 upInfo={upInfo}
                                 handleUpgrade={handleUpgrade}
-                              />}
+                              />
+                            : null}
+                             
       </div>
     </>
   )
