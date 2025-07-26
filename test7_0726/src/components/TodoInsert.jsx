@@ -1,5 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { MdAdd } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { handleInsert } from '../redux/todoSlice'
 
 const formStyle = {
     display: "flex",
@@ -38,19 +40,19 @@ const initialItem = {
 }
 
 
-const TodoInsert = ({nextId, handleInsert}) => {
-    const {handleInsert} = useTodo();
+const TodoInsert = () => {
     const [item, setItem] = useState(initialItem);
+    const dispatch = useDispatch();
 
     const handleChange = useCallback((e) =>{
-        setItem(prev=> ({...prev, id: nextId.current, [e.target.name]: e.target.value}))
+        setItem(prev=> ({...prev, [e.target.name]: e.target.value}))
     }, [])
 
     const handleSubmit = useCallback((e)=>{
         e.preventDefault();
-        handleInsert(item);
+        dispatch(handleInsert(item));
 
-    }, [handleInsert, item.text, nextId])
+    }, [dispatch, item.text])
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
         <input 
