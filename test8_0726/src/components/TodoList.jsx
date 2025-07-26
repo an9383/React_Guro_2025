@@ -11,7 +11,7 @@ const listStyle = {
 
 
 const TodoList = () => {
-  const todos = useSelector(state=>state.todoSlice)
+  const todos = useSelector(state=>state.todoSlice.data)
 
   return (
     <div style={listStyle}>

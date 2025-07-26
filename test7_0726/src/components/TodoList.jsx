@@ -1,7 +1,5 @@
 import React from 'react'
 import TodoListItem from './TodoListItem'
-import { useSelector } from 'react-redux'
-
 
 const listStyle = {
     minHeight: "320px",
@@ -10,9 +8,9 @@ const listStyle = {
 }
 
 
-const TodoList = () => {
-  const todos = useSelector(state=>state.todoSlice)
 
+
+const TodoList = ({todos}) => {
   return (
     <div style={listStyle}>
         {todos.map(todo=>(

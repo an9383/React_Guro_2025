@@ -2,12 +2,15 @@ import { createSlice } from "@reduxjs/toolkit"
 
 
 
-const initialState = [
+const initialState = {
+    name:"todos",
+    data: [
     {id: 1, text: "리액트 공부", checked: true},
      {id: 2, text: "자바 공부", checked: false},
       {id: 3, text: "자바스크립트 공부", checked: true},
        {id: 4, text: "파이썬 공부", checked: false}
-]
+    ],
+}
 
 
 const todoSlice = createSlice({
@@ -15,10 +18,10 @@ const todoSlice = createSlice({
     initialState,
     reducers: {
         handleInsert(state, action) {
-            return [
+            return {
                 ...state,
-                { ...action.payload, id: Date.now() }
-            ];
+                data: { ...action.payload, id: Date.now() }
+            };
         },
 
         handleDelete(state, action) {

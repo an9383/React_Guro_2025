@@ -12,23 +12,44 @@ const initialTodos = [
        {id: 4, text: "파이썬 공부", checked: false}
 ]
 
-const todoSlice = createSlice({
-    name: "todoSlice",
-    initialState,
-    reducers: {
-        handleInsert(state, action) {
-            return [...state,  {...action.payload, id: Date.now()}]
-        },
-        handleDelete(state, action) {
-            return state=>state.filter(todo=>todo.id!==action.payload)
-            },
-        handleToggle(state, action) {
-            return state=>state.map(todo=>todo.id===action.payload? {...todo, checked:!todo.checked} : todo)
-        }
+
+
+const Todo2 = () => {
+    const [todos, setTodos] = useState(initialTodos);
+    // const nextId = useRef(Date.now());
+    const nextId = useRef(initialTodos.length>0? 
+        Math.max(...initialTodos.map(todo=>todo.id))+1: 1)
+
+    const handleInsert = useCallback((obj)=>{
+        setTodos(prev => [
+            ...prev, {...obj, id:nextId.current}
+        ]
+        )
+    }, [])
+
+    const handleDelete = useCallback((id)=>{
+        setTodos(prev => prev.filter(todo => todo.id!== id))
+    },[todos])
+
+    const handleToggle= useCallback((id)=>{
+        setTodos(prev => prev.map(todo => todo.id === id? {...todo, checked:!todo.checked} : todo))
+    },[todos])
+
+    const value = {     
+        todos,
+        handleInsert,
+        handleDelete,
+        handleToggle 
     }
+}
 
-})
+const TodoProvider =({childeren}) => {
+    
+    return (
+        <TodoStateContext.Provider value={todos}>
+            {children}
+        </TodoStateContext.Provider>
+    )
+}
 
-export const { handleInsert, handleDelete, handleToggle } = todoSlice.actions
-export default todoSlice.reducer
-
+export default TodoProvider;

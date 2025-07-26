@@ -1,11 +1,11 @@
+
+import Main from './components/Main'
 import './App.css'
-import Todo from './components/Todo'
 
 function App() {
-
   return (
     <>
-      <Todo/>
+      <Main/>
     </>
   )
 }
