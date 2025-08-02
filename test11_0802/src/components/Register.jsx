@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleRegister, handleDelete, handleSerchName } from '../redux/employeeSlice';
 
 const formStyle = {
   display: 'flex',
@@ -34,7 +37,9 @@ const initialState = {
     pay: ""
 }
 
-const Register = ({mode, handleRegister}) => {
+const Register = () => {
+    const dispatch = useDispatch();
+    const {mode} = useSelector(state=>state.employee);
     const [info, setInfo] = useState(initialState);
 
     const handleChange = (e) =>{
@@ -43,7 +48,7 @@ const Register = ({mode, handleRegister}) => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        handleRegister(info);
+        dispatch(handleSerchName(info.name));
         setInfo(initialState)
     }
 

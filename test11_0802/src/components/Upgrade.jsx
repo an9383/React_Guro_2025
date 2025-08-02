@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from'react-redux';
 
 const formStyle = {
   display: 'flex',
@@ -28,7 +30,9 @@ const inputStyle = {
   fontSize: '14px'
 };
 
-const Upgrade = ({name, upInfo, handleUpgrade}) => {
+const Upgrade = () => {
+  const dispatch = useDispatch();
+  const {name, upInfo } = useSelector(state => state.user);
     const [info, setInfo] = useState(upInfo ? upInfo:{});
 
     const handleChange = (e) =>{
@@ -37,7 +41,7 @@ const Upgrade = ({name, upInfo, handleUpgrade}) => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        handleUpgrade(info)
+        dispatch(handleChange(info));
     }
 
     useEffect(()=>{
