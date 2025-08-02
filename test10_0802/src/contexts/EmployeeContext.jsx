@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 
+
 import { 
     createContext, 
     useContext, 
@@ -72,12 +73,11 @@ export const EmployeeProvider = ({ children }) => {
   };
 
   // 4. context value
-  const value = useMemo( {
-    infos,upInfo,mode,name,modes,
-    handleSearchName,handleClick,handleRegister,handleUpgrade,
-    setMode,setName
-  }, [ infos,upInfo,mode,name,modes,
-    handleSearchName,handleClick,handleRegister,handleUpgrade,setMode,setName]);
+  const value = useMemo(() => ({
+    infos, upInfo, mode, name, modes,
+    handleSearchName, handleClick, handleRegister, handleUpgrade,
+    setMode, setName
+  }), [infos, upInfo, mode, name]);
 
   return (
     <EmployeeContext.Provider value={value}>

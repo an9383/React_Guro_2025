@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useEmployee from '../contexts/EmployeeContext';
 
 const formStyle = {
   display: 'flex',
@@ -27,7 +28,8 @@ const inputStyle = {
   fontSize: '14px'
 };
 
-const Upgrade = ({name, upInfo, handleUpgrade}) => {
+const Upgrade = () => {
+  const {name,upInfo,handleUpgrade} = useEmployee();
     const [info, setInfo] = useState(upInfo ? upInfo:{});
 
     const handleChange = (e) =>{

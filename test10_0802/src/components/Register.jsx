@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import useEmployee from '../contexts/EmployeeContext';
 
 const formStyle = {
   display: 'flex',
@@ -34,7 +35,8 @@ const initialState = {
     pay: ""
 }
 
-const Register = ({mode, handleRegister}) => {
+const Register = () => {
+  const {mode, handleRegister  } = useEmployee();
     const [info, setInfo] = useState(initialState);
 
     const handleChange = (e) =>{
