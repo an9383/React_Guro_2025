@@ -1,33 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+/* eslint-disable no-unused-vars */
+import { useState , useMemo} from 'react'
 import './App.css'
+import ProductDisplay from './components/ProductDisplay'
 
 function App() {
-  const [count, setCount] = useState(0)
+const [text,setText] = useState('')
+const items = useMemo(() => [
+  {id:1, name:'사고'},
+  {id:2, name:'바나나'},
+  {id:3, name:'딸기'}
+],[])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+      <ProductDisplay products={items} filterText={text} />
     </>
   )
 }
