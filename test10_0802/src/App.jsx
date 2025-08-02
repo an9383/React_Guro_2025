@@ -1,6 +1,6 @@
 import './App.css'
 import Main from './components/Main'
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route} from "react-router-dom"
 import { EmployeeProvider } from './contexts/EmployeeContext';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />}/>
         </Routes>
-      </EmployeeProvider> 
+      </EmployeeProvider>
     </>
   )
 }

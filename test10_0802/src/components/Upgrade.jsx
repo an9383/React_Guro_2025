@@ -29,7 +29,7 @@ const inputStyle = {
 };
 
 const Upgrade = () => {
-  const {name,upInfo,handleUpgrade} = useEmployee();
+    const {name, upInfo, handleUpgrade} = useEmployee();
     const [info, setInfo] = useState(upInfo ? upInfo:{});
 
     const handleChange = (e) =>{

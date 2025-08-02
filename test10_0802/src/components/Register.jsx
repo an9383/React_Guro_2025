@@ -36,7 +36,7 @@ const initialState = {
 }
 
 const Register = () => {
-  const {mode, handleRegister  } = useEmployee();
+    const {mode, handleRegister} = useEmployee();
     const [info, setInfo] = useState(initialState);
 
     const handleChange = (e) =>{
