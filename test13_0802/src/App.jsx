@@ -15,6 +15,9 @@ const [user, setUser] = useState(initialStateUser);
  
 const memorizedUser = useMemo(() => (
    {name: user.name, age:user.age},[user]));
+   useEffect(() => {
+     console.log('user changed', user);
+   },[user]);
 
 
 const items = useMemo(() => [
@@ -32,6 +35,8 @@ const items = useMemo(() => [
     <div>
       <input type="text" value={user.name} onChange={e=>setUser(prev=>({...prev, name:e.target.value}))} />
       <input type="number" value={user.age} onChange={e=>setUser(prev=>({...prev, age:e.target.value}))} />
+      <button onClick={()=>setUser(prev=>({...prev, count:prev.count+1}))}>카운트: {user.count}</button>
+      <User user={memorizedUser} />
     </div>
       
     </>
