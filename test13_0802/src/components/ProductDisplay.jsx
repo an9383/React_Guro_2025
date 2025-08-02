@@ -1,11 +1,10 @@
-/* eslint-disable no-unused-vars */
-import React,{useMemo} from 'react'
+import React, { useMemo } from 'react'
 
 const ProductDisplay = ({products, filterText}) => {
-    const filteredProducts = useMemo(() => {
-        return products.filter(product => product.name.includes(filterText)) 
-    }, [products,filterText]
-    )
+
+    const filteredProducts = useMemo(()=>{
+        return products.filter(product=>product.name.includes(filterText))
+    },[products, filterText]);
 
   return (
     <div>
@@ -14,4 +13,4 @@ const ProductDisplay = ({products, filterText}) => {
   )
 }
 
-export default ProductDisplay
+export default ProductDisplay;

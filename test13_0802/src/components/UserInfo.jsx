@@ -1,18 +1,9 @@
-import React,{memo} from 'react'
+import React, {memo} from 'react'
 
-
-const UserInfo = memo(({user})) => {
-    return (
-        <div>
-            {user.name} 
-            {user.age}
-        </div>
-    )
-}
-const UserInfo = () => {
+const UserInfo = memo(({user}) => {
   return (
-    <div>UserInfo</div>
+    <div>{user.name} ({user.age})</div>
   )
-}
+})
 
 export default UserInfo
