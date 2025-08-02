@@ -20,11 +20,11 @@ const initialState = {
 }
 
 
-const EmployeeList = ({infos, handleSearchName}) => {
+const EmployeeList = ({name, infos, handleSearchName}) => {
   const [info, setInfo] = useState(initialState)
-  const handleClick = (name) =>{
-     setInfo(infos?.filter(info=>info.name===name)[0])
-     handleSearchName(name)
+  const handleClick = (n) =>{
+     setInfo(infos?.filter(info=>info.name===n)[0])
+     handleSearchName(n)
   }
   return (
     <>
@@ -37,7 +37,7 @@ const EmployeeList = ({infos, handleSearchName}) => {
                               {info.name}
                             </Link>)}
       </div>
-      <InfoTable info={info}/>
+      {name ? <InfoTable info={info}/> : <InfoTable info={initialState}/>}
     </>
     
   )
