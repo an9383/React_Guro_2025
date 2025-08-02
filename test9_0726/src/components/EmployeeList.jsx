@@ -1,4 +1,5 @@
-import React, { useState }  from 'react';
+/* eslint-disable no-undef */
+import React, { useState, useEffect }  from 'react';
 import { Link } from 'react-router-dom';
 import InfoTable from './InfoTable';
 
@@ -24,8 +25,15 @@ const EmployeeList = ({name, infos, handleSearchName}) => {
   const [info, setInfo] = useState(initialState)
   const handleClick = (n) =>{
      setInfo(infos?.filter(info=>info.name===n)[0])
+     console.log('이름',n);
      handleSearchName(n)
   }
+
+  useEffect(()=>{
+    console.log("info",name);
+    setInfo(infos?.filter(info=>info.name===name)[0])
+  }, [name, infos])
+
   return (
     <>
       <div style={style}>

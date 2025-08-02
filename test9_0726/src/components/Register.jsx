@@ -49,23 +49,23 @@ const Register = ({handleRegister}) => {
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
         Name
-        <input type="text" name="name" style={inputStyle} onChange={handleChange}/>
+        <input type="text" name="name" style={inputStyle} value={info.name} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Age
-        <input type="number" name="age" style={inputStyle} onChange={handleChange}/>
+        <input type="number" name="age" style={inputStyle} value={info.age}  onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Job
-        <input type="text" name="job" style={inputStyle} onChange={handleChange}/>
+        <input type="text" name="job" style={inputStyle} value={info.job} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Language
-        <input type="text" name="language" style={inputStyle} onChange={handleChange}/>
+        <input type="text" name="language" style={inputStyle} value={info.language} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Pay
-        <input type="number" name="pay" style={inputStyle} onChange={handleChange}/>
+        <input type="number" name="pay" style={inputStyle} value={info.pay} onChange={handleChange}/>
       </label>
       <button>등록</button>
     </form>

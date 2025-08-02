@@ -23,9 +23,9 @@ const style ={
 
 const Main = () => {
     const [infos, setInfos] = useState(initialState);
-    const [upInfo, setUpInfo] = useState(null)
+    const [upInfo, setUpInfo] = useState(null);
     const [mode, setMode] = useState('');
-    const [name, setName] = useState('')
+    const [name, setName] = useState('');
   
     const modes = useMemo(()=>[ "register", "upgrade", "delete", "초기화"], [])
     const handleSearchName = (n) =>{
@@ -35,12 +35,33 @@ const Main = () => {
     const handleClick = useCallback((mod) =>{
         setMode(mod);
         if(mod === 'delete'){
-          setInfos(prev=>prev.filter(item => item.name !== name))
+          if(name){
+              setInfos(prev=>prev.filter(item => item.name !== name))
+              setName(null);
+              setMode('');
+          }else{
+            alert("직원을 선택해 주세요.")
+          }
+
+        }else if(mod==='초기화'){
+          setInfos(initialState);
+          setName(null);
+          setMode('');
+        }else if(mod==='upgrade'){
+          if(name){
+            setMode(mod)
+          }else{
+            alert("직원을 선택해 주세요.")
+          }
+        }else if(mod==="register"){
+          setMode(mod)
         }
         setName(null)
     }, [name])
     const handleRegister = (obj) =>{
+      setInfos(prev=>prev.filter(info=>info.name!== obj.name).concat(obj))
       setInfos(prev=>([...prev, obj]))
+
     }
     const handleUpgrade = (obj) => {
       setInfos(prev=>prev.map(item => (item.name===obj.name ? obj: item)))
