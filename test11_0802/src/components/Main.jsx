@@ -1,12 +1,20 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useCallback, useMemo, useState } from 'react'
 import EmployeeList from './employeeList';
 import { Link } from 'react-router-dom';
 import Register from './Register';
 import Upgrade from './Upgrade';
-import { useDispatch, useSelector } from'react-redux';
-import { changeMode, resetState, handleDelete, handleSerchName } from '../redux/employeeSlice';
+import { 
+  useDispatch, 
+  useSelector 
+} from 'react-redux';
+import { 
+  changeMode, 
+  resetState, 
+  handleDelete, 
+  handleSearchName 
+} from '../redux/employeeSlice';
+
+
 
 const style ={
   display: "flex",
@@ -17,27 +25,19 @@ const style ={
   padding: "20px",
 }
 
-
+const modes = [ "register", "upgrade", "delete", "초기화"]
 const Main = () => {
-    // const [infos, setInfos] = useState(initialState);
-    // const [upInfo, setUpInfo] = useState(null)
-    // const [mode, setMode] = useState('');
-    // const [name, setName] = useState('')
-  const dispatch = useDispatch();
-  const {name, mode} = useSelector(state=>state.employee.name);
-
-    const modes = [ "register", "upgrade", "delete", "초기화"]
-
-
+    const dispatch = useDispatch();
+    const {name, mode} = useSelector(state => state.employee)
     const handleClick = useCallback((mod) =>{
         if(mod === 'delete'){
           if(name){
-            dispatch(handleDelete(name))
+              dispatch(handleDelete())
           }else{
             alert("직원을 선택해 주세요.")
-          } 
+          }
         }else if(mod==='초기화'){
-          dispatch(resetState())
+          dispatch(resetState());
         }else if(mod==='upgrade'){
           if(name){
             dispatch(changeMode(mod))
@@ -46,19 +46,14 @@ const Main = () => {
           }
         }else{
           dispatch(changeMode(mod))
-
         }
         // setName(null)
     }, [name])
-
-
   
   return (
     <>
       <div>
-          <EmployeeList 
-
-          />
+          <EmployeeList/>
       </div>
       <div style={style}>
           {modes.map(mod=><Link 
@@ -75,10 +70,10 @@ const Main = () => {
       </div>
        <div>
         {mode === "register" && (
-          <Register           />
+          <Register/>
         )}
         {mode === "upgrade" && (
-          <Upgrade           />
+          <Upgrade/>
         )}
       </div>
     </>

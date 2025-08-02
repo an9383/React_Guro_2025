@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleUpgrade } from '../redux/employeeSlice';
 
 const formStyle = {
   display: 'flex',
@@ -31,8 +30,8 @@ const inputStyle = {
 };
 
 const Upgrade = () => {
-  const dispatch = useDispatch();
-  const {name, upInfo } = useSelector(state => state.user);
+    const dispatch = useDispatch();
+    const {name, upInfo} = useSelector(state=>state.employee)
     const [info, setInfo] = useState(upInfo ? upInfo:{});
 
     const handleChange = (e) =>{
@@ -41,14 +40,14 @@ const Upgrade = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        dispatch(handleChange(info));
+        dispatch(handleUpgrade(info))
     }
 
     useEffect(()=>{
-      console.log('name', name)
+      console.log("name", name)
       setInfo({name, ...upInfo})
     }, [name])
-    
+
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>

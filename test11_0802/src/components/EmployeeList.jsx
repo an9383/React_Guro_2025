@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState }  from 'react';
 import { Link } from 'react-router-dom';
 import InfoTable from './InfoTable';
 import { useDispatch, useSelector } from 'react-redux';
-import { handleSerchName } from '../redux/employeeSlice';
+import { handleSearchName } from '../redux/employeeSlice';
 
 const style ={
   display: "flex",
@@ -24,12 +23,13 @@ const initialState = {
 
 
 const EmployeeList = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const {name, infos} = useSelector(state=>state.employee)
   const [info, setInfo] = useState(initialState)
 
   const handleClick = (n) =>{
      setInfo(infos?.filter(info=>info.name===n)[0])
+     dispatch(handleSearchName(n))
   }
 
   useEffect(()=>{
@@ -40,7 +40,7 @@ const EmployeeList = () => {
   return (
     <>
       <div style={style}>
-          {infos.map(info=><Link 
+          {infos?.map(info=><Link 
                               to="/" 
                               key={info.name}
                               onClick={()=>handleClick(info.name)}
