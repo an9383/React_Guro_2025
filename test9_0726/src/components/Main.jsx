@@ -25,7 +25,11 @@ const Main = () => {
     const [infos, setInfos] = useState(initialState);
     const [upInfo, setUpInfo] = useState(null);
     const [mode, setMode] = useState('');
+<<<<<<< HEAD
     const [name, setName] = useState('');
+=======
+    const [name, setName] = useState('')
+>>>>>>> 11085e4d4a59b0bbcf914821a8897477877daef6
   
     const modes = useMemo(()=>[ "register", "upgrade", "delete", "초기화"], [])
     const handleSearchName = (n) =>{
@@ -35,6 +39,7 @@ const Main = () => {
     const handleClick = useCallback((mod) =>{
         setMode(mod);
         if(mod === 'delete'){
+<<<<<<< HEAD
           if(name){
               setInfos(prev=>prev.filter(item => item.name !== name))
               setName(null);
@@ -55,6 +60,9 @@ const Main = () => {
           }
         }else if(mod==="register"){
           setMode(mod)
+=======
+          setInfos(prev=>prev.filter(item => item.name !== name))
+>>>>>>> 11085e4d4a59b0bbcf914821a8897477877daef6
         }
         setName(null)
     }, [name])

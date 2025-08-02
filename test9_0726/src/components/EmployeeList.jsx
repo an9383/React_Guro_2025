@@ -25,7 +25,10 @@ const EmployeeList = ({name, infos, handleSearchName}) => {
   const [info, setInfo] = useState(initialState)
   const handleClick = (n) =>{
      setInfo(infos?.filter(info=>info.name===n)[0])
+<<<<<<< HEAD
      console.log('이름',n);
+=======
+>>>>>>> 11085e4d4a59b0bbcf914821a8897477877daef6
      handleSearchName(n)
   }
 
