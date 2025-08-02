@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-undef */
-import React, { useState, useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 
 const formStyle = {
   display: 'flex',
@@ -31,6 +29,7 @@ const inputStyle = {
 
 const Upgrade = ({name, upInfo, handleUpgrade}) => {
     const [info, setInfo] = useState(upInfo ? upInfo:{});
+
     const handleChange = (e) =>{
         setInfo(prev=>({...prev, [e.target.name]: e.target.value}))
     }
@@ -48,7 +47,13 @@ const Upgrade = ({name, upInfo, handleUpgrade}) => {
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
         Name
-        <input type="text" name="name" style={inputStyle} value={name && info.name} disabled/>
+        <input 
+          type="text" 
+          name="name" 
+          style={inputStyle} 
+          value={name && info.name} 
+          disabled
+        />
       </label>
       <label style={labelStyle}>
         Age

@@ -23,29 +23,30 @@ const style ={
 
 const Main = () => {
     const [infos, setInfos] = useState(initialState);
-    const [upInfo, setUpInfo] = useState(null);
+    const [upInfo, setUpInfo] = useState(null)
     const [mode, setMode] = useState('');
-    const [name, setName] = useState('');
+    const [name, setName] = useState('')
   
     const modes = useMemo(()=>[ "register", "upgrade", "delete", "초기화"], [])
+
     const handleSearchName = (n) =>{
+          // console.log("이름", n);
           setName(n);
           setUpInfo(infos.filter(info=>info.name===n)[0])
     } 
     const handleClick = useCallback((mod) =>{
-        setMode(mod);
         if(mod === 'delete'){
           if(name){
               setInfos(prev=>prev.filter(item => item.name !== name))
-              setName(null);
+              setName("");
               setMode('');
           }else{
             alert("직원을 선택해 주세요.")
           }
-
+          
         }else if(mod==='초기화'){
           setInfos(initialState);
-          setName(null);
+          setName('');
           setMode('');
         }else if(mod==='upgrade'){
           if(name){
@@ -53,15 +54,16 @@ const Main = () => {
           }else{
             alert("직원을 선택해 주세요.")
           }
-        }else if(mod==="register"){
+        }else{
           setMode(mod)
+
         }
-        setName(null)
+        // setName(null)
     }, [name])
     const handleRegister = (obj) =>{
-      setInfos(prev=>prev.filter(info=>info.name!== obj.name).concat(obj))
-      setInfos(prev=>([...prev, obj]))
-
+      setInfos(prev=>([...prev, obj]));
+      console.log("obj", obj)
+      setName(obj.name);
     }
     const handleUpgrade = (obj) => {
       setInfos(prev=>prev.map(item => (item.name===obj.name ? obj: item)))
@@ -89,18 +91,20 @@ const Main = () => {
                     )
           }
       </div>
-      <div>
-        {mode === "register" ? <Register 
-                                handleRegister={handleRegister}
-                                /> 
-                            : 
-                            mode === "upgrade" ? <Upgrade
-                                name={name}
-                                upInfo={upInfo}
-                                handleUpgrade={handleUpgrade}
-                              />
-                            : null}
-                             
+       <div>
+        {mode === "register" && (
+          <Register
+            mode={mode}
+            handleRegister={handleRegister}
+          />
+        )}
+        {mode === "upgrade" && (
+          <Upgrade
+            name={name}
+            upInfo={upInfo}
+            handleUpgrade={handleUpgrade}
+          />
+        )}
       </div>
     </>
   )

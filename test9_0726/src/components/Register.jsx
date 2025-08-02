@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const formStyle = {
   display: 'flex',
@@ -27,14 +27,14 @@ const inputStyle = {
   fontSize: '14px'
 };
 const initialState = {
-    name: null, 
-    age: null, 
-    job: null, 
-    language: null, 
-    pay: null
+    name: "", 
+    age: "", 
+    job: "", 
+    language: "", 
+    pay: ""
 }
 
-const Register = ({handleRegister}) => {
+const Register = ({mode, handleRegister}) => {
     const [info, setInfo] = useState(initialState);
 
     const handleChange = (e) =>{
@@ -44,7 +44,13 @@ const Register = ({handleRegister}) => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         handleRegister(info);
+        setInfo(initialState)
     }
+
+    useEffect(()=>{
+        setInfo(initialState)
+    }, [mode])
+
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
@@ -53,7 +59,7 @@ const Register = ({handleRegister}) => {
       </label>
       <label style={labelStyle}>
         Age
-        <input type="number" name="age" style={inputStyle} value={info.age}  onChange={handleChange}/>
+        <input type="number" name="age" style={inputStyle} value={info.age} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Job
