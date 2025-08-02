@@ -12,6 +12,7 @@ const cStyle = {
 
 
 const InfoTable = ({info}) => {
+    if (!info) return <div>선택된 정보가 없습니다.</div>; // ← 방어 코드 추가
   return (
     <table style={tStyle}>
         <thead>

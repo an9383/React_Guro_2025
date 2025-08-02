@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const formStyle = {
   display: 'flex',
@@ -26,42 +26,56 @@ const inputStyle = {
   border: '1px solid #ccc',
   fontSize: '14px'
 };
+const initialState = {
+    name: "", 
+    age: "", 
+    job: "", 
+    language: "", 
+    pay: ""
+}
 
-const Upgrade = ({name, upInfo, handleUpgrade}) => {
-    const [info, setInfo] = useState(upInfo ? upInfo:{});
+const Register = ({mode, handleRegister}) => {
+    const [info, setInfo] = useState(initialState);
+
     const handleChange = (e) =>{
         setInfo(prev=>({...prev, [e.target.name]: e.target.value}))
     }
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        handleUpgrade(info)
+        handleRegister(info);
+        setInfo(initialState)
     }
+
+    useEffect(()=>{
+        setInfo(initialState)
+    }, [mode])
+
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
         Name
-        <input type="text" name="name" style={inputStyle} value={name && info.name} disabled/>
+        <input type="text" name="name" style={inputStyle} value={info.name} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Age
-        <input type="number" name="age" style={inputStyle} onChange={handleChange}/>
+        <input type="number" name="age" style={inputStyle} value={info.age} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Job
-        <input type="text" name="job" style={inputStyle} onChange={handleChange}/>
+        <input type="text" name="job" style={inputStyle} value={info.job} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Language
-        <input type="text" name="language" style={inputStyle} onChange={handleChange}/>
+        <input type="text" name="language" style={inputStyle} value={info.language} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Pay
-        <input type="number" name="pay" style={inputStyle} onChange={handleChange}/>
+        <input type="number" name="pay" style={inputStyle} value={info.pay} onChange={handleChange}/>
       </label>
-      <button>수정</button>
+      <button>등록</button>
     </form>
   );
 };
 
-export default Upgrade;
+export default Register;

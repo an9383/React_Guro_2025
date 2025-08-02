@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 
 const formStyle = {
   display: 'flex',
@@ -29,6 +30,7 @@ const inputStyle = {
 
 const Upgrade = ({name, upInfo, handleUpgrade}) => {
     const [info, setInfo] = useState(upInfo ? upInfo:{});
+
     const handleChange = (e) =>{
         setInfo(prev=>({...prev, [e.target.name]: e.target.value}))
     }
@@ -37,27 +39,38 @@ const Upgrade = ({name, upInfo, handleUpgrade}) => {
         e.preventDefault();
         handleUpgrade(info)
     }
+
+    useEffect(()=>{
+      setInfo({name, ...upInfo})
+    }, [name])
+    
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
         Name
-        <input type="text" name="name" style={inputStyle} value={name && info.name} disabled/>
+        <input 
+          type="text" 
+          name="name" 
+          style={inputStyle} 
+          value={name && info.name} 
+          disabled
+        />
       </label>
       <label style={labelStyle}>
         Age
-        <input type="number" name="age" style={inputStyle} onChange={handleChange}/>
+        <input type="number" name="age" style={inputStyle} value={name && info.age} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Job
-        <input type="text" name="job" style={inputStyle} onChange={handleChange}/>
+        <input type="text" name="job" style={inputStyle} value={name && info.job} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Language
-        <input type="text" name="language" style={inputStyle} onChange={handleChange}/>
+        <input type="text" name="language" style={inputStyle} value={name && info.language} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Pay
-        <input type="number" name="pay" style={inputStyle} onChange={handleChange}/>
+        <input type="number" name="pay" style={inputStyle} value={name && info.pay} onChange={handleChange}/>
       </label>
       <button>수정</button>
     </form>

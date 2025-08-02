@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const formStyle = {
   display: 'flex',
@@ -27,14 +27,14 @@ const inputStyle = {
   fontSize: '14px'
 };
 const initialState = {
-    name: "", 
-    age: "", 
-    job: "", 
-    language: "", 
-    pay: ""
+    name: null, 
+    age: null, 
+    job: null, 
+    language: null, 
+    pay: null
 }
 
-const Register = ({mode, handleRegister}) => {
+const Register = ({handleRegister}) => {
     const [info, setInfo] = useState(initialState);
 
     const handleChange = (e) =>{
@@ -44,34 +44,28 @@ const Register = ({mode, handleRegister}) => {
     const handleSubmit=(e)=>{
         e.preventDefault();
         handleRegister(info);
-        setInfo(initialState)
     }
-
-    useEffect(()=>{
-        setInfo(initialState)
-    }, [mode])
-
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
         Name
-        <input type="text" name="name" style={inputStyle} value={info.name} onChange={handleChange}/>
+        <input type="text" name="name" style={inputStyle} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Age
-        <input type="number" name="age" style={inputStyle} value={info.age} onChange={handleChange}/>
+        <input type="number" name="age" style={inputStyle} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Job
-        <input type="text" name="job" style={inputStyle} value={info.job} onChange={handleChange}/>
+        <input type="text" name="job" style={inputStyle} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Language
-        <input type="text" name="language" style={inputStyle} value={info.language} onChange={handleChange}/>
+        <input type="text" name="language" style={inputStyle} onChange={handleChange}/>
       </label>
       <label style={labelStyle}>
         Pay
-        <input type="number" name="pay" style={inputStyle} value={info.pay} onChange={handleChange}/>
+        <input type="number" name="pay" style={inputStyle} onChange={handleChange}/>
       </label>
       <button>등록</button>
     </form>
