@@ -1,6 +1,7 @@
 import React, { useEffect, useState }  from 'react';
 import { Link } from 'react-router-dom';
 import InfoTable from './InfoTable';
+import useEmployee from '../contexts/EmployeeContext';
 
 const style ={
   display: "flex",
@@ -20,7 +21,8 @@ const initialState = {
 }
 
 
-const EmployeeList = ({name, infos, handleSearchName}) => {
+const EmployeeList = () => {
+  const {name, infos, handleSearchName} = useEmployee()
   const [info, setInfo] = useState(initialState)
 
   const handleClick = (n) =>{

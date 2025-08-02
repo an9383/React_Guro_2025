@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 
 const formStyle = {
@@ -41,10 +40,10 @@ const Upgrade = ({name, upInfo, handleUpgrade}) => {
     }
 
     useEffect(()=>{
-      console.log('name', name)
+      console.log("name", name)
       setInfo({name, ...upInfo})
     }, [name])
-    
+
   return (
     <form style={formStyle} onSubmit={handleSubmit}>
       <label style={labelStyle}>
